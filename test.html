@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+    </head>
+    <body>
+        <div><h3></h3></div>
+        
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            var query = {
+                url: 'http://edition.cnn.com/2015/11/11/asia/afghanistan-unrest/index.html',
+                type: 'html',
+                selector: 'p.zn-body__paragraph',
+                extract: 'text'
+              },
+              uriQuery = encodeURIComponent(JSON.stringify(query)),
+              request  = 'http://example.noodlejs.com/?q=' +
+                         uriQuery + '&callback=?';
+
+            // Make Ajax request to Noodle server
+            jQuery.getJSON(request, function (data) {
+              console.log(data[0].results);
+              for (n in data[0].results) {
+                  document.write(data[0].results[n]);
+              }
+            });
+        </script>
+    </body>
+</html>
